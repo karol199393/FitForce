@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  fitforcedatabase:
+    image: postgres:15
+    container_name: fitforce-db
+    environment :
+      POSTGRES_USER: adminFitForce
+      POSTGRES_PASSWORD: admin12345
+      POSTGRES_DB: fitforcedb
+    ports:
+        - "1000:5432"
+
+
+
