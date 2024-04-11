@@ -55,5 +55,10 @@ public class Trainings {
     private String reviews;
     @Column(name = "trainerId")
     private String trainerId;
+    @Column(name = "quality")
+    private String quality;
+    @Column(name = "progress")
+    private String progress;
+
 
 }

@@ -38,5 +38,9 @@ public class User {
     private String instagram;
     @Column(name = "trainings")
     private String trainings;
+    @Column(name = "circuits")
+    private String circuits;
+    @Column(name = "weight")
+    private String weight;
 
 }
