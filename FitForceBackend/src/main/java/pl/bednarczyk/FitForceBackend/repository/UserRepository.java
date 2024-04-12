@@ -5,4 +5,7 @@ import pl.bednarczyk.FitForceBackend.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
+
+
+
 }
