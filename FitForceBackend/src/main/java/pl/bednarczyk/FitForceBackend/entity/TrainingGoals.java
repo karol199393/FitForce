@@ -21,6 +21,12 @@ public class TrainingGoals {
     private Double increaseSpeed;
     @Column(name = "increaseAcceleration")
     private Double increaseAcceleration;
+    @Column(name = "increaseStamina")
+    private Double increaseStamina;
+    @Column(name = "increaseFlexibility")
+    private Double increaseFlexibility;
+    @Column(name = "increaseDexterity")
+    private Double increaseDexterity;
 
 
 

@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: user_seq
+            startValue: 1
+
+  - changeSet:
+      id: 4
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: trainings_seq
+            startValue: 1

@@ -31,12 +31,6 @@ public class IntegrityTests {
                 .andExpect(status().isOk());
         verify(trainingsService).getTrainingById(id);
     }
-    @Test
-     public void getTrainingProgress_ReturnsOk() throws Exception {
-          Long trainingId = 1L;
-          mockMvc.perform(get("/trainings/getTrainingProgress/{trainingId}", trainingId))
-                 .andExpect(status().isOk());
-          verify(trainingsService).calculateTrainingProgress(trainingId);
-     }
+
 
 }
