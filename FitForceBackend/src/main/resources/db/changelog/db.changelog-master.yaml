@@ -11,6 +11,7 @@ databaseChangeLog:
                   type: SERIAL
                   constraints:
                     primaryKey: true
+                  autoIncrement: true
               - column:
                   name: username
                   type: VARCHAR(255)
@@ -24,13 +25,13 @@ databaseChangeLog:
                   name: role
                   type: VARCHAR(255)
               - column:
-                  name: firstName
+                  name: first_name
                   type: VARCHAR(255)
               - column:
-                  name: lastName
+                  name: last_name
                   type: VARCHAR(255)
               - column:
-                  name: phoneNumber
+                  name: phone_number
                   type: VARCHAR(255)
               - column:
                   name: address
@@ -39,7 +40,7 @@ databaseChangeLog:
                   name: city
                   type: VARCHAR(255)
               - column:
-                  name: postalCode
+                  name: postal_code
                   type: VARCHAR(255)
               - column:
                   name: country
@@ -56,10 +57,7 @@ databaseChangeLog:
               - column:
                   name: weight
                   type: VARCHAR(255)
-      preConditions:
-        - not:
-            tableExists:
-              tableName: users
+
   - changeSet:
       id: 2
       author: author_name
@@ -79,6 +77,7 @@ databaseChangeLog:
                   type: SERIAL
                   constraints:
                     primaryKey: true
+                  autoIncrement: true
               - column:
                   name: name
                   type: VARCHAR(255)
@@ -101,7 +100,7 @@ databaseChangeLog:
                   name: exercises
                   type: VARCHAR(255)
               - column:
-                  name: imageUrl
+                  name: image_url
                   type: VARCHAR(255)
               - column:
                   name: trainer
@@ -134,7 +133,7 @@ databaseChangeLog:
                   name: participants
                   type: VARCHAR(255)
               - column:
-                  name: maxParticipants
+                  name: max_participants
                   type: VARCHAR(255)
               - column:
                   name: rating
@@ -143,18 +142,15 @@ databaseChangeLog:
                   name: reviews
                   type: VARCHAR(255)
               - column:
-                  name: trainerId
+                  name: trainer_id
                   type: VARCHAR(255)
+
               - column:
                   name: quality
                   type: VARCHAR(255)
               - column:
                   name: progress
                   type: VARCHAR(255)
-      preConditions:
-        - not:
-            tableExists:
-              tableName: trainings
   - changeSet:
       id: 4
       author: author_name
@@ -175,13 +171,14 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    autoIncrement: true
+                  autoIncrement: true
               - column:
                   name: training_id
                   type: BIGINT
                   constraints:
                     foreignKeyName: fk_training_goals_training_id
                     references: trainings(id)
+                  autoIncrement: true
               - column:
                   name: weight_loss_goal
                   type: DOUBLE
@@ -194,7 +191,10 @@ databaseChangeLog:
               - column:
                   name: increase_acceleration_goal
                   type: DOUBLE
-      preConditions:
-        - not:
-            tableExists:
-              tableName: training_goals
+  - changeSet:
+      id: 6
+      author: author_name
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/insert-data.sql
+
