@@ -28,6 +28,4 @@ public class TrainingGoals {
     @Column(name = "increaseDexterity")
     private Double increaseDexterity;
 
-
-
 }
