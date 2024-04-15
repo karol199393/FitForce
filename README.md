@@ -21,7 +21,7 @@ Kalorycznosc, wykresy , Kalendarz treningów
 - funkcjonalnosc,Backend(Karol)
 - kalendarz bmi(Chylu)
 
-Funkcjonalności dla aplikacji Java Spring dla trenera personalnego monitorującej postępy w osiąganiu celów treningowych:
+3.Funkcjonalności dla aplikacji Java Spring dla trenera personalnego monitorującej postępy w osiąganiu celów treningowych:
 
 *Rejestracja użytkowników:
 Trener oraz jego klienci mogą się zarejestrować i utworzyć konta w aplikacji.
