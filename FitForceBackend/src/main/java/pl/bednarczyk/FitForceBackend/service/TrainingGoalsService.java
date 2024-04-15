@@ -54,6 +54,18 @@ public class TrainingGoalsService {
     {
         return targetSpeed - currentSpeed;
     }
-    //Metoda obliczająca cel zwiększenia przyśpieszenia
+    //Metoda obliczająca cel zwiększenia przyspieszenia
+    public Double calculateIncreaseAccelerationGoal(Double currentAcceleration, Double targetAcceleration)
+    {
+        return targetAcceleration - currentAcceleration;
+    }
+    //Metoda obliczająca BMI
+    public Double calculateBMI(Double weight, Double height)
+    {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Wzrost musi być większy od 0.");
+        }
+        return weight / (height * height);
+    }
 
 }
