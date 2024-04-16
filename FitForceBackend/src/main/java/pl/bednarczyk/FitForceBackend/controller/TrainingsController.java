@@ -23,10 +23,6 @@ public class TrainingsController {
     public Object getTrainingById(Long id) {
         return trainingsService.getTrainingById(id);
     }
-    public int getTrainingProgress(@PathVariable Long trainingId) {
-        LocalDate startDate = LocalDate.of(2024, 1, 1);
-        LocalDate endDate = LocalDate.of(2024, 4, 31);
-        return trainingsService.calculateTrainingProgress(trainingId, startDate, endDate);
-    }
+
 
 }

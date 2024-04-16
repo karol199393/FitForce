@@ -143,8 +143,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
               - column:
                   name: trainer_id
-                  type: VARCHAR(255)
-
+                  type: BIGINT
               - column:
                   name: quality
                   type: VARCHAR(255)
@@ -174,7 +173,7 @@ databaseChangeLog:
                   autoIncrement: true
               - column:
                   name: training_id
-                  type: BIGINT
+                  type: INTEGER
                   constraints:
                     foreignKeyName: fk_training_goals_training_id
                     references: trainings(id)
@@ -197,4 +196,6 @@ databaseChangeLog:
       changes:
         - sqlFile:
             path: db/changelog/sql/insert-data.sql
+
+
 
