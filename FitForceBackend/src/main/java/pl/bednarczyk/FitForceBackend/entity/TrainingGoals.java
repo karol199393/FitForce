@@ -3,6 +3,8 @@ package pl.bednarczyk.FitForceBackend.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "training_goals")
 @Data
@@ -10,9 +12,8 @@ public class TrainingGoals {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "training_id")
-    private Trainings training;
+    @OneToMany(mappedBy = "trainingGoal")
+    private List<Trainings> trainings; // Zmiana na kolekcję encji Trainings
     @Column(name = "weight_loss_goal")
     private Double weightLossGoal;
     @Column(name = "muscle_gain_goal")

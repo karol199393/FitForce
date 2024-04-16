@@ -59,6 +59,8 @@ public class Trainings {
     private String quality;
     @Column(name = "progress")
     private String progress;
-
+    @ManyToOne
+    @JoinColumn(name = "training_goal_id") // Ustawienie kolumny, która mapuje relację
+    private TrainingGoals trainingGoal; // Dodanie właściwości trainingGoal
 
 }
