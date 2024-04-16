@@ -17,27 +17,21 @@ public class WeightLossGoal {
     public void addWeightMeasurement(Double weight) {
         weightMeasurements.add(weight);
     }
-
     public void addWaistMeasurement(Double waist) {
         waistMeasurements.add(waist);
     }
-
     public void addHipMeasurement(Double hip) {
         hipMeasurements.add(hip);
     }
-
     public void addChestMeasurement(Double chest) {
         chestMeasurements.add(chest);
     }
-
     public void addArmMeasurement(Double arm) {
         armMeasurements.add(arm);
     }
-
     public void addCalories(Integer caloriesBurned) {
         calories.add(caloriesBurned);
     }
-
     public double calculateWeightLossGoal() {
         double totalWeightLoss = 0.0;
         if (!weightMeasurements.isEmpty()) {
@@ -48,7 +42,6 @@ public class WeightLossGoal {
         return totalWeightLoss / 4;
 
     }
-
     public double calculateWaistLossGoal() {
         double totalWaistLoss = 0.0;
         if (!waistMeasurements.isEmpty()) {
@@ -58,7 +51,6 @@ public class WeightLossGoal {
         }
         return totalWaistLoss / 4;
     }
-
     public double calculateHipLossGoal() {
         double totalHipLoss = 0.0;
         if (!hipMeasurements.isEmpty()) {
@@ -68,7 +60,6 @@ public class WeightLossGoal {
         }
         return totalHipLoss / 4;
     }
-
     public double calculateChestLossGoal() {
         double totalChestLoss = 0.0;
         if (!chestMeasurements.isEmpty()) {
@@ -78,7 +69,6 @@ public class WeightLossGoal {
         }
         return totalChestLoss / 4;
     }
-
     public double calculateArmLossGoal() {
         double totalArmLoss = 0.0;
         if (!armMeasurements.isEmpty()) {
@@ -88,13 +78,11 @@ public class WeightLossGoal {
         }
         return totalArmLoss / 4;
     }
-
     public double calculateCalories() {
         int totalCalories = 0;
         for (int calories : calories) {
             totalCalories += calories;
         }
         return totalCalories / 8; // Zakładamy, że miesiąc ma 4 tygodnie i prowadzimy dziennik żywieniowy 2 razy w tygodniu
-
     }
 }
