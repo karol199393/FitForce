@@ -1,4 +1,4 @@
-Frontend 
+Frontend - https://github.com/Jakub686/FitForce-FE
 
 1.Main Tasks:
 -kalkulator bmi,
