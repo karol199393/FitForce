@@ -1,10 +1,9 @@
 package pl.bednarczyk.FitForceBackend.service;
 
 import org.springframework.stereotype.Service;
-import pl.bednarczyk.FitForceBackend.entity.Trainings;
+import pl.bednarczyk.FitForceBackend.entity.Training;
 import pl.bednarczyk.FitForceBackend.repository.TrainingsRepository;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -13,16 +12,16 @@ public class TrainingService {
     public TrainingService(TrainingsRepository TrainingsRepository) {
         this.TrainingsRepository = TrainingsRepository;
     }
-    public List<Trainings> getAllTrainings() {
+    public List<Training> getAllTrainings() {
         return TrainingsRepository.findAll();
     }
     public Object getTrainingById(Long id) {
         return TrainingsRepository.findById(id).orElse(null);
     }
-    public Trainings addTraining(Trainings training) {
+    public Training addTraining(Training training) {
         return TrainingsRepository.save(training);
     }
-    public Object updateTraining(Long id, Trainings trainingDetails) {
+    public Object updateTraining(Long id, Training trainingDetails) {
         return TrainingsRepository.save(trainingDetails);
     }
     public void deleteTraining(Long id) {
