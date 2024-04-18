@@ -5,6 +5,7 @@ import pl.bednarczyk.FitForceBackend.entity.Trainings;
 import pl.bednarczyk.FitForceBackend.repository.TrainingsRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class TrainingService {
@@ -12,7 +13,7 @@ public class TrainingService {
     public TrainingService(TrainingsRepository TrainingsRepository) {
         this.TrainingsRepository = TrainingsRepository;
     }
-    public Object getAllTrainings() {
+    public List<Trainings> getAllTrainings() {
         return TrainingsRepository.findAll();
     }
     public Object getTrainingById(Long id) {

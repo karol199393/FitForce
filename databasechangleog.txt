@@ -81,6 +81,75 @@ databaseChangeLog:
               - column:
                   name: name
                   type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: level
+                  type: VARCHAR(255)
+              - column:
+                  name: duration
+                  type: VARCHAR(255)
+              - column:
+                  name: equipment
+                  type: VARCHAR(255)
+              - column:
+                  name: exercises
+                  type: VARCHAR(255)
+              - column:
+                  name: image_url
+                  type: VARCHAR(255)
+              - column:
+                  name: trainer
+                  type: VARCHAR(255)
+              - column:
+                  name: category
+                  type: VARCHAR(255)
+              - column:
+                  name: calories
+                  type: VARCHAR(255)
+              - column:
+                  name: comments
+                  type: VARCHAR(255)
+              - column:
+                  name: date
+                  type: VARCHAR(255)
+              - column:
+                  name: time
+                  type: VARCHAR(255)
+              - column:
+                  name: location
+                  type: VARCHAR(255)
+              - column:
+                  name: price
+                  type: VARCHAR(255)
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: participants
+                  type: VARCHAR(255)
+              - column:
+                  name: max_participants
+                  type: VARCHAR(255)
+              - column:
+                  name: rating
+                  type: VARCHAR(255)
+              - column:
+                  name: reviews
+                  type: VARCHAR(255)
+              - column:
+                  name: trainer_id
+                  type: BIGINT
+              - column:
+                  name: quality
+                  type: VARCHAR(255)
+              - column:
+                  name: progress
+                  type: VARCHAR(255)
   - changeSet:
       id: 4
       author: author_name
@@ -105,6 +174,10 @@ databaseChangeLog:
               - column:
                   name: training_id
                   type: INTEGER
+                  constraints:
+                    foreignKeyName: fk_training_goals_training_id
+                    references: trainings(id)
+                  autoIncrement: true
               - column:
                   name: weight_loss_goal
                   type: DOUBLE
@@ -117,7 +190,12 @@ databaseChangeLog:
               - column:
                   name: increase_acceleration_goal
                   type: DOUBLE
-
+  - changeSet:
+      id: 6
+      author: author_name
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/insert-data.sql
 
 
 

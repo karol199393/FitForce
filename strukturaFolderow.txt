@@ -1,0 +1,13 @@
+src/
+|-- app/
+|   |-- services/
+|   |-- models/
+|   |-- pages/
+	|-- components/
+|   |-- shared/
+|   |-- app.module.ts
+|   |-- app.component.ts
+|   |-- app.component.html
+|   |-- app.component.css
+|-- assets/
+|-- environments/
