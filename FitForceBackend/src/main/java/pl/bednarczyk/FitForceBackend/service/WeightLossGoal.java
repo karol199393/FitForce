@@ -39,7 +39,7 @@ public class WeightLossGoal {
             double latestWeight = weightMeasurements.get(weightMeasurements.size() - 1);
             totalWeightLoss = initialWeight - latestWeight;
         }
-        return totalWeightLoss / 4;
+        return totalWeightLoss / 12;
 
     }
     public double calculateWaistLossGoal() {
@@ -49,7 +49,7 @@ public class WeightLossGoal {
             double latestWaist = waistMeasurements.get(waistMeasurements.size() - 1);
             totalWaistLoss = initialWaist - latestWaist;
         }
-        return totalWaistLoss / 4;
+        return totalWaistLoss / 12;
     }
     public double calculateHipLossGoal() {
         double totalHipLoss = 0.0;
@@ -58,7 +58,7 @@ public class WeightLossGoal {
             double latestHip = hipMeasurements.get(hipMeasurements.size() - 1);
             totalHipLoss = initialHip - latestHip;
         }
-        return totalHipLoss / 4;
+        return totalHipLoss / 12;
     }
     public double calculateChestLossGoal() {
         double totalChestLoss = 0.0;
@@ -67,7 +67,7 @@ public class WeightLossGoal {
             double latestChest = chestMeasurements.get(chestMeasurements.size() - 1);
             totalChestLoss = initialChest - latestChest;
         }
-        return totalChestLoss / 4;
+        return totalChestLoss / 12;
     }
     public double calculateArmLossGoal() {
         double totalArmLoss = 0.0;
@@ -76,13 +76,13 @@ public class WeightLossGoal {
             double latestArm = armMeasurements.get(armMeasurements.size() - 1);
             totalArmLoss = initialArm - latestArm;
         }
-        return totalArmLoss / 4;
+        return totalArmLoss / 12;
     }
     public double calculateCalories() {
         int totalCalories = 0;
         for (int calories : calories) {
             totalCalories += calories;
         }
-        return totalCalories / 8; // Zakładamy, że miesiąc ma 4 tygodnie i prowadzimy dziennik żywieniowy 2 razy w tygodniu
+        return totalCalories / 12; // Zakładamy, że miesiąc ma 4 tygodnie i prowadzimy dziennik żywieniowy 2 razy w tygodniu
     }
 }

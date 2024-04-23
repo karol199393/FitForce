@@ -10,15 +10,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainings")
-@CrossOrigin(origins = "http://localhost:65322")
+@CrossOrigin(origins = "**")
 public class TrainingsController {
-    private TrainingService trainingsService;
+    private final TrainingService trainingsService;
     public TrainingsController(TrainingService trainingsService) {
         this.trainingsService = trainingsService;
     }
     @GetMapping("/getAllTrainings")
     public ResponseEntity<List<Training>> getAllTrainings() {
-        List<Training> trainings = (List<Training>) trainingsService.getAllTrainings();
+        List<Training> trainings = trainingsService.getAllTrainings();
         return new ResponseEntity<>(trainings,HttpStatus.OK);
     }
     @GetMapping("/{id}")
