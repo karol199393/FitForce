@@ -11,11 +11,11 @@ import pl.bednarczyk.FitForceBackend.service.TrainingGoalsService;
 public class TrainingGoalsController {
     private TrainingGoalsService trainingGoalsService;
 
-    public TrainingGoalsController(TrainingGoalsService trainingGoalsService){
+    public TrainingGoalsController(TrainingGoalsService trainingGoalsService) {
         this.trainingGoalsService = trainingGoalsService;
     }
 
-    public TrainingGoals createTrainingGoal(@RequestBody TrainingGoals trainingGoal){
+    public TrainingGoals createTrainingGoal(@RequestBody TrainingGoals trainingGoal) {
         return trainingGoalsService.createTrainingGoal(trainingGoal);
     }
 }

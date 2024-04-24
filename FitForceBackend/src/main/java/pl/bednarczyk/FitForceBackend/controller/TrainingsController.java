@@ -9,21 +9,20 @@ import pl.bednarczyk.FitForceBackend.service.TrainingService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/trainings")
-@CrossOrigin(origins = "**")
+@RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TrainingsController {
-    private final TrainingService trainingsService;
-    public TrainingsController(TrainingService trainingsService) {
-        this.trainingsService = trainingsService;
+
+    private final TrainingService trainingService;
+
+    public TrainingsController(TrainingService trainingService) {
+        this.trainingService = trainingService;
     }
-    @GetMapping("/getAllTrainings")
+
+    @GetMapping("/trainings")
     public ResponseEntity<List<Training>> getAllTrainings() {
-        List<Training> trainings = trainingsService.getAllTrainings();
-        return new ResponseEntity<>(trainings,HttpStatus.OK);
-    }
-    @GetMapping("/{id}")
-    public Object getTrainingById(Long id) {
-        return trainingsService.getTrainingById(id);
+        List<Training> trainings = trainingService.getAllTrainings();
+        return new ResponseEntity<>(trainings, HttpStatus.OK);
     }
 
 
