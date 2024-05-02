@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen   ")
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
     @Column(name = "username")
