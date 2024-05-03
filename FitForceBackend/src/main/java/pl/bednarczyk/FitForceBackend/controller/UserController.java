@@ -9,7 +9,7 @@ import pl.bednarczyk.FitForceBackend.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -60,5 +60,6 @@ public class UserController {
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.registerUser(user));
     }
+
 }
 
