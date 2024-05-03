@@ -1,7 +1,9 @@
 package pl.bednarczyk.FitForceBackend.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @RequiredArgsConstructor
 @Table(name = "users")
@@ -14,6 +16,8 @@ public class User {
     private Long id;
     @Column(name = "username")
     private String username;
+    @Setter
+    @Getter
     @Column(name = "password")
     private String password;
     @Column(name = "email")
