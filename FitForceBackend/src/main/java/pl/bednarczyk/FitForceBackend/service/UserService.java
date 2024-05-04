@@ -1,6 +1,5 @@
 package pl.bednarczyk.FitForceBackend.service;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.bednarczyk.FitForceBackend.entity.User;
 import pl.bednarczyk.FitForceBackend.repository.UserRepository;
@@ -8,12 +7,11 @@ import pl.bednarczyk.FitForceBackend.repository.UserRepository;
 @Service
 public class UserService {
     private UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder)
+    public UserService(UserRepository userRepository)
     {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+
     }
 
     public User addUser(User user) {
@@ -36,21 +34,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
-    }
 
-    public User setPassword(Long id ,String newPassword)
-    {
-        User user = userRepository.findById(id).orElse(null);
-        if(user != null)
-        {
-            user.setPassword(passwordEncoder.encode(newPassword));
-            return userRepository.save(user);
-        }
-        return user;
-    }
+
+
 
 
 }
