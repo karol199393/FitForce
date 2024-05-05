@@ -1,5 +1,6 @@
 package pl.bednarczyk.FitForceBackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,7 @@ public class Training {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "training", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Exercises> exercises;
 
     public Training(String name) {

@@ -1,5 +1,6 @@
 package pl.bednarczyk.FitForceBackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class Exercises {
     private String name;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "training_id")
+    @JsonBackReference
     private Training training;
 }
