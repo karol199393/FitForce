@@ -117,6 +117,35 @@ databaseChangeLog:
               - column:
                   name: increase_acceleration_goal
                   type: DOUBLE
+  - changeSet:
+      id: 6
+      author: author_name
+      changes:
+        - createTable:
+            tableName: exercises
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: training_id
+                  type: INTEGER
+                  constraints:
+                    foreignKeyName: fk_exercises_training
+                    references: trainings(id)
+  - changeSet:
+      id: 7
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: exercises_seq
+            startValue: 1
 
 
 

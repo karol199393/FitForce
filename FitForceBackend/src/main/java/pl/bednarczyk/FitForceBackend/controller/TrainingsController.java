@@ -19,11 +19,20 @@ public class TrainingsController {
         this.trainingService = trainingService;
     }
 
+
     @GetMapping("/trainings")
     public ResponseEntity<List<Training>> getAllTrainings() {
         List<Training> trainings = trainingService.getAllTrainings();
         return new ResponseEntity<>(trainings, HttpStatus.OK);
     }
+
+    @GetMapping("/trainingsWithExercises")
+    public ResponseEntity<List<Training>> getAllTrainingsWithExercises() {
+        List<Training> trainings = trainingService.getAllTraininsWithExercises();
+        return new ResponseEntity<>(trainings, HttpStatus.OK);
+    }
+
+
 
 
 }

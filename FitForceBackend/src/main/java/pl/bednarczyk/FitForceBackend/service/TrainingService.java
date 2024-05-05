@@ -34,5 +34,9 @@ public class TrainingService {
         TrainingsRepository.deleteById(id);
     }
 
+    public List<Training> getAllTraininsWithExercises() {
+        return TrainingsRepository.findAll();
+    }
+
 
 }
