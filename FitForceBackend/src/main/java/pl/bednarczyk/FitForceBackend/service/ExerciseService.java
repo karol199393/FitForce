@@ -1,5 +1,6 @@
 package pl.bednarczyk.FitForceBackend.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.bednarczyk.FitForceBackend.entity.Exercises;
 import pl.bednarczyk.FitForceBackend.entity.Training;
@@ -11,10 +12,12 @@ import java.util.List;
 @Service
 public class ExerciseService {
     public ExerciseRepository exerciseRepository;
+
     public TrainingsRepository trainingRepository;
 
     public ExerciseService(ExerciseRepository exerciseRepository) {
         this.exerciseRepository = exerciseRepository;
+        this.trainingRepository = trainingRepository;
     }
 
     public void deleteExerciseById(Long id) {
