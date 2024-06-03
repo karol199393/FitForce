@@ -103,6 +103,9 @@ databaseChangeLog:
                     nullable: false
                   autoIncrement: true
               - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
                   name: training_id
                   type: INTEGER
               - column:
@@ -112,11 +115,26 @@ databaseChangeLog:
                   name: muscle_gain_goal
                   type: DOUBLE
               - column:
-                  name: increase_speed_goal
+                  name: increaseSpeed_goal
                   type: DOUBLE
               - column:
-                  name: increase_acceleration_goal
+                  name: increaseAcceleration
                   type: DOUBLE
+              - column:
+                  name: waist_loss_goal
+                  type: DOUBLE
+              - column:
+                  name: hip_loss_goal
+                  type: DOUBLE
+              - column:
+                  name: chest_loss_goal
+                  type: DOUBLE
+              - column:
+                  name: arm_loss_goal
+                  type: DOUBLE
+              - column:
+                  name: calories_burned
+                  type: INTEGER
   - changeSet:
       id: 6
       author: author_name
@@ -146,7 +164,3 @@ databaseChangeLog:
         - createSequence:
             sequenceName: exercises_seq
             startValue: 1
-
-
-
-

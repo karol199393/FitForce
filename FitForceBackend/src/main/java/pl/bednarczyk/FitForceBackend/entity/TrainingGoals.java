@@ -20,5 +20,18 @@ public class TrainingGoals {
     private Double increaseSpeed;
     @Column(name = "increaseAcceleration")
     private Double increaseAcceleration;
-
+    @Column(name = "waist_loss_goal")
+    private Double waistLossGoal;
+    @Column(name = "hip_loss_goal")
+    private Double hipLossGoal;
+    @Column(name = "chest_loss_goal")
+    private Double chestLossGoal;
+    @Column(name = "arm_loss_goal")
+    private Double armLossGoal;
+    @Column(name = "calories_burned")
+    private Integer caloriesBurned;
+    @Column(name = "training_id")
+    private Integer trainingId;
+    @Column(name = "user_id")
+    private Long userId;
 }
