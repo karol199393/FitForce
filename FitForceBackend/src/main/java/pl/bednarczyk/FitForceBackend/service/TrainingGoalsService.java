@@ -137,4 +137,8 @@ public class TrainingGoalsService {
         }
         return totalLoss / 12;
     }
+
+    public TrainingGoals save(TrainingGoals trainingGoals) {
+        return trainingGoalsRepository.save(trainingGoals);
+    }
 }

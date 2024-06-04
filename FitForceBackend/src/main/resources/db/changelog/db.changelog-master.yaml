@@ -103,6 +103,9 @@ databaseChangeLog:
                     nullable: false
                   autoIncrement: true
               - column:
+                  name: date
+                  type: DATE
+              - column:
                   name: user_id
                   type: BIGINT
               - column:
