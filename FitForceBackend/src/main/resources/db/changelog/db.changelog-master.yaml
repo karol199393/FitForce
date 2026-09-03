@@ -167,3 +167,116 @@ databaseChangeLog:
         - createSequence:
             sequenceName: exercises_seq
             startValue: 1
+  - changeSet:
+      id: 8
+      author: codex
+      changes:
+        - addColumn:
+            tableName: exercises
+            columns:
+              - column: { name: description, type: VARCHAR(2000) }
+              - column: { name: muscle_group, type: VARCHAR(100) }
+              - column: { name: equipment, type: VARCHAR(100) }
+        - createTable:
+            tableName: workout_plans
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: user_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_plan_user, references: users(id) } }
+              - column: { name: name, type: VARCHAR(255), constraints: { nullable: false } }
+              - column: { name: description, type: VARCHAR(2000) }
+              - column: { name: created_at, type: TIMESTAMP WITH TIME ZONE, constraints: { nullable: false } }
+        - createTable:
+            tableName: workout_plan_exercises
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: plan_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_plan_exercise_plan, references: workout_plans(id) } }
+              - column: { name: exercise_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_plan_exercise_exercise, references: exercises(id) } }
+              - column: { name: position, type: INTEGER, constraints: { nullable: false } }
+              - column: { name: target_sets, type: INTEGER }
+              - column: { name: target_reps, type: INTEGER }
+              - column: { name: rest_seconds, type: INTEGER }
+              - column: { name: target_rpe, type: DOUBLE }
+              - column: { name: target_rir, type: INTEGER }
+        - createTable:
+            tableName: workout_sessions
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: user_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_session_user, references: users(id) } }
+              - column: { name: plan_id, type: BIGINT, constraints: { foreignKeyName: fk_session_plan, references: workout_plans(id) } }
+              - column: { name: name, type: VARCHAR(255), constraints: { nullable: false } }
+              - column: { name: started_at, type: TIMESTAMP WITH TIME ZONE, constraints: { nullable: false } }
+              - column: { name: finished_at, type: TIMESTAMP WITH TIME ZONE }
+              - column: { name: status, type: VARCHAR(30), constraints: { nullable: false } }
+        - createTable:
+            tableName: exercise_sets
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: session_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_set_session, references: workout_sessions(id) } }
+              - column: { name: exercise_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_set_exercise, references: exercises(id) } }
+              - column: { name: set_number, type: INTEGER, constraints: { nullable: false } }
+              - column: { name: weight, type: "DECIMAL(8,2)", constraints: { nullable: false } }
+              - column: { name: repetitions, type: INTEGER, constraints: { nullable: false } }
+              - column: { name: rpe, type: DOUBLE }
+              - column: { name: rir, type: INTEGER }
+              - column: { name: completed, type: BOOLEAN, defaultValueBoolean: false, constraints: { nullable: false } }
+        - createTable:
+            tableName: body_measurements
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: user_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_measurement_user, references: users(id) } }
+              - column: { name: measured_at, type: DATE, constraints: { nullable: false } }
+              - column: { name: weight, type: "DECIMAL(8,2)" }
+              - column: { name: waist, type: "DECIMAL(8,2)" }
+              - column: { name: chest, type: "DECIMAL(8,2)" }
+              - column: { name: hips, type: "DECIMAL(8,2)" }
+              - column: { name: arm, type: "DECIMAL(8,2)" }
+              - column: { name: body_fat_percentage, type: "DECIMAL(5,2)" }
+        - createTable:
+            tableName: fitness_goals
+            columns:
+              - column: { name: id, type: BIGSERIAL, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: user_id, type: BIGINT, constraints: { nullable: false, foreignKeyName: fk_goal_user, references: users(id) } }
+              - column: { name: type, type: VARCHAR(40), constraints: { nullable: false } }
+              - column: { name: name, type: VARCHAR(255), constraints: { nullable: false } }
+              - column: { name: start_value, type: "DECIMAL(10,2)", constraints: { nullable: false } }
+              - column: { name: target_value, type: "DECIMAL(10,2)", constraints: { nullable: false } }
+              - column: { name: current_value, type: "DECIMAL(10,2)", constraints: { nullable: false } }
+              - column: { name: deadline, type: DATE }
+              - column: { name: completed, type: BOOLEAN, defaultValueBoolean: false, constraints: { nullable: false } }
+        - createIndex:
+            tableName: workout_sessions
+            indexName: idx_session_user_started
+            columns:
+              - column: { name: user_id }
+              - column: { name: started_at }
+        - createIndex:
+            tableName: body_measurements
+            indexName: idx_measurement_user_date
+            columns:
+              - column: { name: user_id }
+              - column: { name: measured_at }
+  - changeSet:
+      id: 9
+      author: codex
+      changes:
+        - sql:
+            sql: SELECT setval('user_seq', COALESCE((SELECT MAX(id) FROM users), 0) + 1, false)
+  - changeSet:
+      id: 10
+      author: codex
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO exercises (name, description, muscle_group, equipment)
+              SELECT seed.name, seed.description, seed.muscle_group, seed.equipment
+              FROM (VALUES
+                ('Przysiad ze sztanga', 'Przysiad ze sztanga trzymana na gornej czesci plecow.', 'Nogi', 'Sztanga'),
+                ('Martwy ciag', 'Wielostawowe podnoszenie sztangi z podloza.', 'Plecy i nogi', 'Sztanga'),
+                ('Wyciskanie sztangi lezac', 'Wyciskanie sztangi na lawce poziomej.', 'Klatka piersiowa', 'Sztanga i lawka'),
+                ('Wyciskanie zolnierskie', 'Wyciskanie sztangi nad glowe w pozycji stojacej.', 'Barki', 'Sztanga'),
+                ('Podciaganie', 'Podciaganie ciala na drazku nachwytem lub podchwytem.', 'Plecy', 'Drazek'),
+                ('Wioslowanie sztanga', 'Przyciaganie sztangi do tulowia w opadzie.', 'Plecy', 'Sztanga'),
+                ('Pompki', 'Klasyczne pompki z ciezarem wlasnego ciala.', 'Klatka piersiowa', 'Brak'),
+                ('Plank', 'Izometryczne utrzymanie stabilnej pozycji podporu.', 'Core', 'Mata')
+              ) AS seed(name, description, muscle_group, equipment)
+              WHERE NOT EXISTS (SELECT 1 FROM exercises e WHERE lower(e.name) = lower(seed.name));

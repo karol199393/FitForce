@@ -2,10 +2,10 @@ package pl.bednarczyk.FitForceBackend.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 @Entity
 @Getter
@@ -13,16 +13,14 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen   ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
-    @Setter
-    @Getter
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     @Column(name = "role")
     private String role;

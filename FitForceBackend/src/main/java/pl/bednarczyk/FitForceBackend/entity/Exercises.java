@@ -18,7 +18,11 @@ public class Exercises {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    private String description;
+    private String muscleGroup;
+    private String equipment;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "training_id")
     @JsonBackReference
